@@ -6,7 +6,7 @@
 - Giọng Nhu — Calm and Confident, nữ Việt Nam, giọng Hà Nội theo catalog Genvoice; model `eleven_turbo_v2_5` có xác nhận `vi-VN`. Request thật 82 ký tự tạo MP3 4,754 giây, dùng 41 credit; đúng một request tạo giọng. Xem `demo/vietnamese-female-preview.json` và nghe `demo/vietnamese-female-preview.mp3`.
 - Toàn bộ `upgrade_tests`: **138 passed, 30.54 giây**. Trong đó 16 test mới kiểm tra UI tiếng Việt, giọng mặc định, không hiển thị giọng mẫu Bella, khóa dữ kiện nguồn và khôi phục transcript có giữ bản sao.
 - Bản tiếng Anh vẫn có entry riêng; test xác nhận lựa chọn viết kịch bản và cấu hình mặc định cũ vẫn hoạt động.
-- Trouter chưa được gọi thật vì chưa có key cấu hình. Không có key được đưa vào repository hoặc GitHub Secrets. Mã nguồn phát hành là snapshot hiện tại có LICENSE và attribution, không mang lịch sử Git upstream.
+- Trouter chưa được gọi thật vì chưa có key cấu hình. Mã nguồn phát hành là snapshot hiện tại có LICENSE và attribution, không mang lịch sử Git upstream và không chứa key. Cập nhật sau phát hành: repo đã Public; `GENVOICE_API_KEY` đã được mã hóa và lưu trong GitHub Actions Secrets theo yêu cầu. Chưa tìm thấy key Trouter để lưu.
 - Nguồn giọng nữ/bản ngữ/giọng Hà Nội là metadata của provider; mẫu tạo thành công không thay thế đánh giá bằng nghe. Các giới hạn OCR, Qwen, Demucs và đồng bộ trên video thật dưới đây vẫn áp dụng.
 
 ## Ghi nhận bản trước — 30/10/2026

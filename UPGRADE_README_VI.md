@@ -87,6 +87,6 @@ Tiếng gốc có thể chứa cả lời thoại và nhạc, không chỉ tiế
 
 ## Mã nguồn và attribution
 
-Nền: Huanshere/VideoLingo, commit `01f843492759be9bbfd1a5cb697b799cc9de1609`, Apache-2.0. LICENSE được giữ nguyên. Các module mới nằm trong `upgrade/`, giao diện mới `upgrade_app.py`; upstream `st.py` không bị sửa. `.gitignore` được bổ sung loại trừ dữ liệu runtime/secret. Bản này không publish hoặc fork trên GitHub.
+Nền: Huanshere/VideoLingo, commit `01f843492759be9bbfd1a5cb697b799cc9de1609`, Apache-2.0. LICENSE được giữ nguyên. Các module mới nằm trong `upgrade/`, giao diện mới `upgrade_app.py`; upstream `st.py` không bị sửa. `.gitignore` được bổ sung loại trừ dữ liệu runtime/secret. Bản tiếng Việt được phát hành tại https://github.com/Canadawecome/videolingo-vietnamese dưới dạng snapshot có attribution, không mang lịch sử upstream.
 
 Chạy kiểm thử: `python -m pytest upgrade_tests -q`. Tạo lại demo: `python -m upgrade_tests.make_demo`.

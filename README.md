@@ -14,7 +14,7 @@ Cần Python 3.12 và FFmpeg/ffprobe trong PATH. Trên Windows có thể nhấp 
 - [Hướng dẫn bản tiếng Việt](VIETNAMESE_EDITION.md)
 - [Hướng dẫn đầy đủ của bản nâng cấp](UPGRADE_README_VI.md)
 - [Kết quả và giới hạn kiểm thử](TEST_REPORT.md)
-- API key nhập trên máy hoặc qua biến môi trường; repository không chứa key. `.env.upgrade.example` chỉ là mẫu và không tự được nạp.
+- API key nhập trên máy hoặc qua biến môi trường; mã nguồn không chứa key. Chủ repo đã lưu `GENVOICE_API_KEY` trong GitHub Actions Secrets (không đi kèm bản clone). `.env.upgrade.example` chỉ là mẫu và không tự được nạp.
 - Job, video người dùng, cache, model tải về và credential được giữ ngoài Git. Mỗi máy mới cần cấu hình key riêng.
 - Bản tiếng Anh trước đó vẫn có tại `upgrade_app.py` / `run-upgrade.cmd`. Phần README phía dưới và `st.py` / `Dockerfile` là tài liệu, ứng dụng của dự án gốc.
 

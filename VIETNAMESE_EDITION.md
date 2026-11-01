@@ -21,7 +21,8 @@ Chọn font Arial trên Windows. `st.py` và `Dockerfile` gốc vẫn dành cho 
 - Trouter: nhập key vào ô mật khẩu trong sidebar, hoặc đặt `TROUTER_API_KEY` trong môi trường trước khi khởi động. Mặc định base `https://api.trouter.cloud/v1`; model có thể đổi trong sidebar.
 - Genvoice: nhập key vào ô mật khẩu trong sidebar, hoặc đặt `GENVOICE_API_KEY` trong môi trường. Máy đã có credential Genvoice sẽ tiếp tục dùng credential đó khi base đúng `https://api.genvoice.pro`.
 - Cấu hình giọng mặc định ở `upgrade_tts_vi_config.json`: Nhu — Calm and Confident, nữ bản ngữ Việt Nam, giọng Hà Nội; model `eleven_turbo_v2_5`, mã `vi`. Đây là cấu hình công khai, không chứa key.
-- `.env.upgrade.example` là mẫu tên biến, không tự được nạp. Repository và GitHub Secrets không có key được đưa lên trong lần phát hành này. Khi dùng máy khác cần cấu hình key tại máy đó.
+- `.env.upgrade.example` là mẫu tên biến, không tự được nạp. Mã nguồn và lịch sử Git không chứa key. Repository công khai có secret `GENVOICE_API_KEY` được mã hóa trong GitHub Actions Secrets; chưa có key Trouter để lưu. Chủ repo quản lý tại Settings → Secrets and variables → Actions.
+- GitHub Actions Secrets không được tải về khi clone và không tự điền vào ứng dụng local. Khi dùng máy khác cần cấu hình key tại máy đó; khi chạy workflow, phải truyền secret vào biến môi trường một cách rõ ràng. Bản này chưa có workflow dùng key.
 
 ## Luồng làm một video
 
