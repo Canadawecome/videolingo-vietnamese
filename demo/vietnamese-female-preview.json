@@ -1,0 +1,62 @@
+{
+  "verified_at_utc": "2026-11-01T12:10:39.955051+00:00",
+  "config_file": "upgrade_tts_vi_config.json",
+  "sample_file": "demo/vietnamese-female-preview.mp3",
+  "sample_text": "Xin chào, đây là giọng nữ tiếng Việt tự nhiên, đọc rõ ràng cho bản dịch sát nghĩa.",
+  "sample_characters": 82,
+  "voice_evidence": {
+    "voice_id": "A5w1fw5x0uXded1LDvZp",
+    "name": "Nhu - Calm and Confident",
+    "gender": "female",
+    "language": "vi",
+    "accent": "standard",
+    "description": "Native Vietnamese female voice with a clear and authentic Hanoi accent. Suitable for general-purpose text-to-speech, narration, and creative voice applications.",
+    "category": "professional",
+    "verified_languages": [
+      {
+        "language": "vi",
+        "model_id": "eleven_turbo_v2_5",
+        "accent": "standard",
+        "locale": "vi-VN"
+      }
+    ],
+    "catalog_route": "https://api.genvoice.pro/v1/shared-voices?page_size=5&gender=female&required_languages=vi&sort=cloned_by_count&page=0",
+    "catalog_docs": "https://genvoice.pro/assets/list-shared-voices-Dkwmqbh5.js"
+  },
+  "model_evidence": {
+    "model_id": "eleven_turbo_v2_5",
+    "name": "Eleven Turbo v2.5",
+    "can_do_text_to_speech": true,
+    "can_use_style": false,
+    "can_use_speaker_boost": false,
+    "supports_speed": true,
+    "supports_similarity": true,
+    "language": {
+      "language_id": "vi",
+      "name": "Vietnamese"
+    },
+    "catalog_route": "https://api.genvoice.pro/v1/models"
+  },
+  "native_accent_basis": "Provider describes this voice as native Vietnamese with an authentic Hanoi accent; this is catalog evidence, not a listening assessment.",
+  "state": "completed",
+  "cache_hit_before_generation": false,
+  "cache_file": "runtime\\genvoice_cache\\d53a88c5ece253eb1de37905463d0a57315bfba545fce12616f5cc59b95ef8f0.mp3",
+  "original_english_checksums": {
+    "upgrade_tts_config.json": "e1c953b39869329afbf4caf49bc8f920d37d957cd199c2b1dfedb5cf112a7d6c",
+    "demo\\bella-english-preview.mp3": "ee9f9332d7e5a6c8334d2b49baad744325a50ad0252e43864ee1a89ca806df51"
+  },
+  "duration_seconds": 4.75425,
+  "audio_bytes": 76113,
+  "audio_checksum": "129e43cfb674751269f8677aa14cf37ce24f769de7a52017b02fd5aa046505ae",
+  "usage": {
+    "task_id": "cb82917c-4770-4c27-bb07-509d5b353ef0",
+    "state": "completed",
+    "characters_used": 82,
+    "credits_deducted": 41,
+    "checksum": "129e43cfb674751269f8677aa14cf37ce24f769de7a52017b02fd5aa046505ae",
+    "duration": 4.75425,
+    "characters": 82
+  },
+  "tts_posts_this_run": 1,
+  "original_english_preserved": true
+}

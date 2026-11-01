@@ -1,0 +1,13 @@
+<!doctype html><html lang="vi"><meta charset="utf-8"><style>
+body{margin:0;font:14px system-ui;color:#c9d3e7;background:transparent}canvas{width:100%;max-height:440px;object-fit:contain;cursor:crosshair;touch-action:none}p{margin:5px 0}
+</style><canvas id="c"></canvas><p>Kéo trên ảnh để chọn vùng che / đặt phụ đề.</p><script>
+const c=document.getElementById('c'),ctx=c.getContext('2d');let img=new Image(),box=[.05,.75,.9,.2],origin=null;
+function send(type,extra={}){parent.postMessage({isStreamlitMessage:true,type,...extra},'*')}
+function draw(){ctx.clearRect(0,0,c.width,c.height);ctx.drawImage(img,0,0,c.width,c.height);ctx.fillStyle='rgba(63,159,255,.25)';ctx.strokeStyle='#59caff';ctx.lineWidth=3;let [x,y,w,h]=box;ctx.fillRect(x*c.width,y*c.height,w*c.width,h*c.height);ctx.strokeRect(x*c.width,y*c.height,w*c.width,h*c.height)}
+function point(e){let r=c.getBoundingClientRect();return [Math.max(0,Math.min(1,(e.clientX-r.left)/r.width)),Math.max(0,Math.min(1,(e.clientY-r.top)/r.height))]}
+c.onpointerdown=e=>{origin=point(e);c.setPointerCapture(e.pointerId)};
+c.onpointermove=e=>{if(!origin)return;let p=point(e);box=[Math.min(origin[0],p[0]),Math.min(origin[1],p[1]),Math.abs(origin[0]-p[0]),Math.abs(origin[1]-p[1])];draw()};
+c.onpointerup=e=>{if(!origin)return;origin=null;if(box[2]>.005&&box[3]>.005)send('streamlit:setComponentValue',{value:box,dataType:'json'})};
+window.addEventListener('message',e=>{if(e.data.type!=='streamlit:render')return;let a=e.data.args;box=a.box;img.onload=()=>{c.width=img.width;c.height=img.height;draw();let w=Math.min(c.parentElement.clientWidth,440*img.width/img.height);c.style.width=w+'px';c.style.height=(w*img.height/img.width)+'px';send('streamlit:setFrameHeight',{height:c.getBoundingClientRect().height+35})};img.src=a.image});
+send('streamlit:componentReady',{apiVersion:1});send('streamlit:setFrameHeight',{height:470});
+</script></html>

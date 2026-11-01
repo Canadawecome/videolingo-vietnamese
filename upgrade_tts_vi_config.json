@@ -1,0 +1,22 @@
+{
+  "base": "https://api.genvoice.pro",
+  "route": "/v1/text-to-speech/{voice_id}",
+  "header": "xi-api-key",
+  "prefix": "",
+  "protocol": "genvoice_async",
+  "provider": "elevenlabs",
+  "voice": "A5w1fw5x0uXded1LDvZp",
+  "voice_name": "Nhu - Calm and Confident",
+  "voice_language": "vi",
+  "voice_gender": "female",
+  "voice_locale": "vi-VN",
+  "voice_accent_description": "Native Vietnamese, Hanoi accent (provider catalog)",
+  "model": "eleven_turbo_v2_5",
+  "language": "vi",
+  "verified": true,
+  "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.75,
+    "speed": 1.0
+  }
+}

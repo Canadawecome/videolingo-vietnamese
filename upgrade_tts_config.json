@@ -1,0 +1,20 @@
+{
+  "base": "https://api.genvoice.pro",
+  "route": "/v1/text-to-speech/{voice_id}",
+  "header": "xi-api-key",
+  "prefix": "",
+  "protocol": "genvoice_async",
+  "provider": "elevenlabs",
+  "voice": "hpp4J3VqNfWAUOO0d1Us",
+  "voice_name": "Bella - Professional, Bright, Warm",
+  "model": "eleven_multilingual_v2",
+  "language": "en",
+  "verified": true,
+  "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.75,
+    "style": 0.0,
+    "use_speaker_boost": true,
+    "speed": 1.0
+  }
+}

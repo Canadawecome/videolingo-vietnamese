@@ -1,0 +1,127 @@
+import os
+import json
+import time
+import requests
+import tempfile
+from core.asr_backend.audio_preprocess import audio_slice_wav
+from rich import print as rprint
+from core.utils import *
+
+# ----------------------------------------
+# ISO 639-2 to 1
+# ----------------------------------------
+
+iso_639_2_to_1 = {
+    "eng": "en",
+    "fra": "fr", 
+    "deu": "de",
+    "ita": "it",
+    "spa": "es",
+    "rus": "ru",
+    "kor": "ko",
+    "jpn": "ja",
+    "zho": "zh",
+    "yue": "zh"
+}
+
+# ----------------------------
+# elevenlabs format to whisper format
+# ----------------------------
+
+SPLIT_GAP = 1
+def elev2whisper(elev_json, word_level_timestamp = False):
+    words = elev_json.get("words", [])
+    if not words:
+        return {"segments": []}
+
+    segments, seg = [], {
+        "text": "",                     # accumulated text
+        "start": words[0]["start"],     # seg start time
+        "end": words[0]["end"],         # seg end time (updates)
+        "speaker_id": words[0]["speaker_id"],
+        "words": []                       # optional per‑word info
+    }
+
+    for prev, nxt in zip(words, words[1:] + [None]):  # pairwise with sentinel
+        seg["text"] += prev["text"]
+        seg["end"] = prev["end"]
+        if word_level_timestamp:
+            seg["words"].append({"word": prev["text"], "start": prev["start"], "end": prev["end"]})
+        # decide whether to break the segment
+        if nxt is None or (nxt["start"] - prev["end"] > SPLIT_GAP) or (nxt["speaker_id"] != seg["speaker_id"]):
+            seg["text"] = seg["text"].strip()
+            if not word_level_timestamp:
+                seg.pop("words")
+            segments.append(seg)
+            if nxt is not None:  # seed next segment
+                seg = {
+                    "text": "",
+                    "start": nxt["start"],
+                    "end": nxt["end"],
+                    "speaker_id": nxt["speaker_id"],
+                    "words": []
+                }
+    return {"segments": segments}
+
+def transcribe_audio_elevenlabs(raw_audio_path, vocal_audio_path, start = None, end = None):
+    rprint(f"[cyan]🎤 Processing audio transcription, file path: {vocal_audio_path}[/cyan]")
+    
+    # Use the same FFmpeg decoder as the other cloud ASR backend.
+    audio_data = audio_slice_wav(vocal_audio_path, start, end)
+    with tempfile.NamedTemporaryFile(suffix='.wav', delete=False) as temp_file:
+        temp_filepath = temp_file.name
+        temp_file.write(audio_data)
+    
+    try:
+        api_key = load_key("whisper.elevenlabs_api_key")
+        base_url = "https://api.elevenlabs.io/v1/speech-to-text"
+        headers = {"xi-api-key": api_key}
+        
+        data = {
+            "model_id": "scribe_v1",
+            "timestamps_granularity": "word",
+            "language_code": load_key("whisper.language"),
+            "diarize": True,
+            "num_speakers": None,
+            "tag_audio_events": False
+        }
+        
+        with open(temp_filepath, 'rb') as audio_file:
+            files = {"file": (os.path.basename(temp_filepath), audio_file, 'audio/wav')}
+            start_time = time.time()
+            response = requests.post(base_url, headers=headers, data=data, files=files)
+            
+        rprint(f"[yellow]API request sent, status code: {response.status_code}[/yellow]")
+        result = response.json()
+
+        # save detected language
+        detected_language = iso_639_2_to_1.get(result["language_code"], result["language_code"])
+        update_key("whisper.detected_language", detected_language)
+
+        # Adjust timestamps for all words by adding the start time
+        if start is not None and 'words' in result:
+            for word in result['words']:
+                if 'start' in word:
+                    word['start'] += start
+                if 'end' in word:
+                    word['end'] += start
+        
+        rprint(f"[green]✓ Transcription completed in {time.time() - start_time:.2f} seconds[/green]")
+        # Keep word-level timestamps so downstream process_transcription has `words`.
+        parsed_result = elev2whisper(result, word_level_timestamp=True)
+        parsed_result["language"] = detected_language
+        return parsed_result
+    finally:
+        # Clean up the temporary file
+        if os.path.exists(temp_filepath):
+            os.remove(temp_filepath)
+
+if __name__ == "__main__":
+    file_path = input("Enter local audio file path (mp3 format): ")
+    # Language is not a parameter: the request body reads whisper.language from config.
+    result = transcribe_audio_elevenlabs(file_path, file_path)
+    print(result)
+    
+    # Save result to file
+    with open("output/transcript.json", "w", encoding="utf-8") as f:
+        json.dump(result, f, ensure_ascii=False, indent=4)

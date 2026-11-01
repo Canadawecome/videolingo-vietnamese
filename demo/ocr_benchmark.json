@@ -1,0 +1,152 @@
+{
+  "regions": [
+    {
+      "id": "r1",
+      "start": 0,
+      "end": 6.0,
+      "bbox": [
+        0.26458333333333334,
+        0.7944444444444444,
+        0.46875000000000006,
+        0.11481481481481481
+      ],
+      "confidence": 0.7894258168628977,
+      "source": "auto",
+      "approved": false
+    }
+  ],
+  "samples": [
+    {
+      "timestamp": 0.0,
+      "text": "Original burned-in subtitles",
+      "confidence": 0.814299516697297,
+      "bbox": [
+        0.26666666666666666,
+        0.8018518518518518,
+        0.4666666666666667,
+        0.1
+      ]
+    },
+    {
+      "timestamp": 0.5,
+      "text": "Original burned-in subtitles",
+      "confidence": 0.8236177053163766,
+      "bbox": [
+        0.26666666666666666,
+        0.8018518518518518,
+        0.4666666666666667,
+        0.1
+      ]
+    },
+    {
+      "timestamp": 1.0,
+      "text": "Original burned-in subtitles",
+      "confidence": 0.8253193685227329,
+      "bbox": [
+        0.26666666666666666,
+        0.8018518518518518,
+        0.4666666666666667,
+        0.1
+      ]
+    },
+    {
+      "timestamp": 1.5,
+      "text": "Original burned-in subtitles",
+      "confidence": 0.9128379585844146,
+      "bbox": [
+        0.265625,
+        0.7981481481481482,
+        0.46770833333333334,
+        0.10740740740740741
+      ]
+    },
+    {
+      "timestamp": 2.0,
+      "text": "Original burned-in subtitles",
+      "confidence": 0.9891786997111016,
+      "bbox": [
+        0.26458333333333334,
+        0.7944444444444444,
+        0.46875,
+        0.11481481481481481
+      ]
+    },
+    {
+      "timestamp": 2.5,
+      "text": "Original burned-in subtitles",
+      "confidence": 0.8217811958180907,
+      "bbox": [
+        0.26666666666666666,
+        0.8018518518518518,
+        0.4666666666666667,
+        0.1
+      ]
+    },
+    {
+      "timestamp": 3.0,
+      "text": "Original burned-in subtitles",
+      "confidence": 0.8070844058324098,
+      "bbox": [
+        0.26666666666666666,
+        0.8018518518518518,
+        0.4666666666666667,
+        0.1
+      ]
+    },
+    {
+      "timestamp": 3.5,
+      "text": "Original burned-in subtitles",
+      "confidence": 0.8381203997360409,
+      "bbox": [
+        0.26666666666666666,
+        0.8018518518518518,
+        0.4666666666666667,
+        0.1
+      ]
+    },
+    {
+      "timestamp": 4.0,
+      "text": "Original burned-in subtitles",
+      "confidence": 0.8496806294701964,
+      "bbox": [
+        0.26666666666666666,
+        0.8018518518518518,
+        0.4666666666666667,
+        0.1
+      ]
+    },
+    {
+      "timestamp": 4.5,
+      "text": "Original burned-in subtitles",
+      "confidence": 0.7894258168628977,
+      "bbox": [
+        0.26666666666666666,
+        0.8018518518518518,
+        0.4666666666666667,
+        0.1
+      ]
+    },
+    {
+      "timestamp": 5.0,
+      "text": "Original burned-in subtitles",
+      "confidence": 0.8633796962714069,
+      "bbox": [
+        0.26666666666666666,
+        0.8018518518518518,
+        0.4666666666666667,
+        0.1
+      ]
+    },
+    {
+      "timestamp": 5.5,
+      "text": "Original burned-in subtitles",
+      "confidence": 0.8303483967301708,
+      "bbox": [
+        0.26666666666666666,
+        0.8018518518518518,
+        0.4666666666666667,
+        0.1
+      ]
+    }
+  ]
+}

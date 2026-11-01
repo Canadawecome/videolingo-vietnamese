@@ -1,0 +1,17 @@
+{ 
+    "introduction": {
+      "title": "Introduction"
+    },
+    "start": {
+      "title": "Start"
+    },
+    "whisperx-manual": {
+      "title": "WhisperX (manual install)"
+    },
+    "tech": {
+      "title": "Tech"
+    },
+    "docker": {
+      "title": "Docker Installation"
+    }
+  }
